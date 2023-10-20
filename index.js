@@ -10,7 +10,7 @@ const setDefaultOptions = (opts = {}) =>
   (defaultOpts = { ...defaultOpts, ...opts });
 
 async function backendFetch(fullPath, opts = {}) {
-  if (fullPath.includes("aws-lambda://")) {
+  if (!fullPath.includes("aws-lambda://")) {
     throw Error("Missing protocol aws-lambda");
   }
   fullPath = fullPath.replace("aws-lambda://", "");
